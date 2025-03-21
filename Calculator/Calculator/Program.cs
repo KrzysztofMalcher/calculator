@@ -1,7 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Reflection;
-
 namespace Calculator;
 
 internal class Program
@@ -12,63 +11,52 @@ internal class Program
         var action = "";
         var stopApp = false;
         var calculatorEngine = new CalculatorEngine();
-
         while (!stopApp)
         {
-            float[] arguments = [];
-            showAvailableAction();
+            ShowAvailableAction<CalculatorEngine.AvailableActions>();
             action = Console.ReadLine();
-            //GetAction(action);
-            switch (action)
+            CalculatorEngine.AvailableActions operation;
+            bool properEnumValue = Enum.TryParse(action, out operation);
+            if (properEnumValue && Enum.IsDefined(typeof(CalculatorEngine.AvailableActions),operation))
             {
-                case "q":
-                    stopApp = true;
-                    break;
-                case "1":
-                    Console.WriteLine("You are adding two numbers");
-                    arguments = GetArguments();
-                    Console.WriteLine("Sum of provided numbers is " +
-                                      calculatorEngine.Compute(CalculatorEngine.AvailableActions.Add, arguments));
-                    break;
-                case "2":
-                    Console.WriteLine("You are subtracting two numbers");
-                    arguments = GetArguments();
-                    Console.WriteLine(string.Concat("Subtraction of provided numbers is " +
-                                                    calculatorEngine.Compute(CalculatorEngine.AvailableActions.Subtract,
-                                                        arguments)));
-                    break;
-                case "3":
-                    Console.WriteLine("You are multiplicating two numbers");
-                    arguments = GetArguments();
-                    Console.WriteLine(string.Concat("Multiplication of provided numbers is " +
-                                                    calculatorEngine.Compute(CalculatorEngine.AvailableActions.Multiply,
-                                                        arguments)));
-                    break;
-                case "4":
-                    Console.WriteLine("You are dividing two numbers");
-                    arguments = GetArguments();
-                    if (arguments[1] == 0)
-                        Console.WriteLine("Dividing by zero is not allowed");
-                    else
-                        Console.WriteLine(string.Concat("Division of provided numbers is " +
-                                                        calculatorEngine.Compute(
-                                                            CalculatorEngine.AvailableActions.Divide, arguments)));
-                    break;
-                default:
-                    Console.WriteLine("Unknown action, please try again");
-                    break;
+                Console.WriteLine(GetEnumDescription(operation));
+                float[] arguments = GetArguments();
+                Console.WriteLine("Calculation result: " + calculatorEngine.Compute(operation, arguments));
+                
+            } else if (action == "q")
+            {
+                Console.WriteLine("Bye");
+                stopApp = true;
+            }
+            else
+            {
+                Console.WriteLine("Unknown action, please try again");
             }
         }
     }
-
-    private static void showAvailableAction()
+    
+    private static void ShowAvailableAction<TEnum>() where TEnum : Enum
     {
         Console.WriteLine("Choose action:");
         Console.WriteLine("q. Exit");
-        Console.WriteLine("1. Add\n2. Subtract\n3. Multiply\n4. Divide");
+        var values = Enum.GetValues(typeof(TEnum));
+        int index = 0;
+        foreach (TEnum enumValue in Enum.GetValues(typeof(TEnum)))
+        {
+            string description = GetEnumDescription(enumValue);
+            Console.WriteLine($"{index}: {description}");
+            index++;
+        }
         Console.Write("Enter action number: ");
     }
-
+    
+    private static string GetEnumDescription(Enum value)
+    {
+        FieldInfo field = value.GetType().GetField(value.ToString());
+        DescriptionAttribute attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
+        return attribute == null ? value.ToString() : attribute.Description;
+    }
+    
     private static float[] GetArguments()
     {
         float firstParsedArgument = GetConsoleInput("Enter first number: ");
@@ -83,7 +71,7 @@ internal class Program
         float parsedArgument = 0;
         do
         {
-            Console.Write("Enter first number: ");
+            Console.Write(consoleMessage);
             var argument = Console.ReadLine();
             if (float.TryParse(argument, out var number))
             {
@@ -98,4 +86,5 @@ internal class Program
 
         return parsedArgument;
     }
+    
 }

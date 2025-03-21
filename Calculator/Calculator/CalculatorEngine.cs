@@ -5,11 +5,11 @@ namespace Calculator;
 public class CalculatorEngine
 {
     public float? Compute(AvailableActions operation, float[] numbers)
-    {   
-        ValidateInput(operation, numbers);
+    {
+        ValidateInput( operation, numbers);
         switch (operation)
         {
-            case AvailableActions.Add: 
+            case AvailableActions.Add:
                 return Add(numbers);
             case AvailableActions.Subtract:
                 return Subtract(numbers);
@@ -28,20 +28,32 @@ public class CalculatorEngine
         {
             throw new Exception("Dividing by zero is not allowed");
         }
-        
+
         return true;
     }
-
+    private readonly Dictionary<AvailableActions, string> AvailableOptionDescriptions = new()
+    {
+        { AvailableActions.Add, "Adding numbers" },
+        { AvailableActions.Subtract, "Subtracting numbers" },
+        { AvailableActions.Multiply, "Multiplicating numbers" },
+        { AvailableActions.Divide, "Dividing numbers" },
+    };
+    
     public enum AvailableActions
     {
         [Description("Adding numbers")]
-        Add,
+        Add = 0,
         [Description("Subtracting numbers")]
-        Subtract,
+        Subtract = 1,
         [Description("Multiplicating numbers")]
-        Multiply,
+        Multiply = 2,
         [Description("Dividing numbers")]
-        Divide
+        Divide = 3
+    }
+
+    public string GetActionDescritpion(AvailableActions operation)
+    {
+        return AvailableOptionDescriptions[operation];
     }
     
     private float Add(float [] numbers)
