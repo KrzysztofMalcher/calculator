@@ -1,2 +1,30 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AInt32_002Ecs_002Fl_003AC_0021_003FUsers_003Fkrzysztofmalcher_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003Faef21ab35a6576cdcb99a56e6a8c84076d069f09ad1be52cfedaf49ee667855_003FInt32_002Ecs/@EntryIndexedValue">ForceIncluded</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AArgumentNullException_002Ecs_002Fl_003AC_0021_003FUsers_003Fkrzysztofmalcher_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003F7fcc41fe48c43f71d1476329de953fce8565fcc5dbf3c8c6fdb81c216b19c4_003FArgumentNullException_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AEnum_002Ecs_002Fl_003AC_0021_003FUsers_003Fkrzysztofmalcher_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003F5a876eaa41b34484b8fcd5cb8827d6e27e1844a2709c7397f37df6ed403f_003FEnum_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=7020124F_002D9FFC_002D4AC3_002D8F3D_002DAAB8E0240759_002Ff_003AInt32_002Ecs_002Fl_003AC_0021_003FUsers_003Fkrzysztofmalcher_003FAppData_003FRoaming_003FJetBrains_003FRider2024_002E3_003Fresharper_002Dhost_003FSourcesCache_003Faef21ab35a6576cdcb99a56e6a8c84076d069f09ad1be52cfedaf49ee667855_003FInt32_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1dc21fb5_002Dc984_002D4c04_002Db937_002D1621ac428949/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Compute_AddOperation_ReturnsSum #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::36E72FD7-E022-446F-B1E5-4B120ADD2F7A::net8.0::Calculator.Tests.CalculatorEngineTests.Compute_AddOperation_ReturnsSum&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=9cff9e83_002D27a2_002D498a_002Da714_002D94f8d3c92fba/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RunApp_When_Started_Then_DisplayWelcomeMessage" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::36E72FD7-E022-446F-B1E5-4B120ADD2F7A::net8.0::Calculator.Tests.ConsoleAppTests.RunApp_When_Started_Then_DisplayWelcomeMessage&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=d0bc4162_002D1c17_002D4960_002D8959_002D1fffb968f353/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RunApp_When_Started_Then_DisplayWelcomeMessage #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::36E72FD7-E022-446F-B1E5-4B120ADD2F7A::net8.0::Calculator.Tests.ConsoleAppTests.RunApp_When_Started_Then_DisplayWelcomeMessage&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=f6084c00_002D927b_002D4248_002Dbb3a_002D68cb04c5711a/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="RunApp_When_Started_Then_ShouldDisplayAvailableActions" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::36E72FD7-E022-446F-B1E5-4B120ADD2F7A::net8.0::Calculator.Tests.ConsoleAppTests.RunApp_When_Started_Then_ShouldDisplayAvailableActions&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=fd6df107_002D0b27_002D48b8_002D9025_002Dcc2331e2e80c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Compute_AddOperation_ReturnsSum" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::36E72FD7-E022-446F-B1E5-4B120ADD2F7A::net8.0::Calculator.Tests.CalculatorEngineTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::36E72FD7-E022-446F-B1E5-4B120ADD2F7A::net8.0::Calculator.Tests.ConsoleAppTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
