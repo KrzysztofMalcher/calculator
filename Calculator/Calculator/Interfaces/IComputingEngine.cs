@@ -1,7 +1,8 @@
 ﻿namespace Calculator.Interfaces;
 
-public interface IComputingEngine<TAction> where TAction : Enum
+public interface IComputingEngine
 {
-    float? Compute(TAction operation, float[] numbers);
-    bool ValidateInput(TAction operation, float[] numbers);
+    float? Compute(string operation, float[] numbers);
+    bool ValidateInput(string operation, float[] numbers);
+    Dictionary<string, string> GetAvailableActions();
 }

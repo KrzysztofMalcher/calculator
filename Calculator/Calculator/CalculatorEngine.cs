@@ -1,30 +1,30 @@
 ﻿using System.ComponentModel;
+using System.Reflection;
 using Calculator.Interfaces;
 namespace Calculator;
 
-public class CalculatorEngine : IComputingEngine<CalculatorEngine.AvailableActions>
+public class CalculatorEngine : IComputingEngine
 {
-    public float? Compute(AvailableActions operation, float[] numbers)
+    public float? Compute(string operation, float[] numbers)
     {
-
         switch (operation)
         {
-            case AvailableActions.Add:
+            case "1":
                 return Add(numbers);
-            case AvailableActions.Subtract:
+            case "2":
                 return Subtract(numbers);
-            case AvailableActions.Multiply:
+            case "3":
                 return Multiply(numbers);
-            case AvailableActions.Divide:
+            case "4":
                 return Divide(numbers);
         }
 
         return null;
     }
 
-    public bool ValidateInput(AvailableActions operation, float[] numbers)
+    public bool ValidateInput(string operation, float[] numbers)
     {
-        if (operation == AvailableActions.Divide && numbers[1] == 0)
+        if (operation == "4" && numbers[1] == 0)
         {
             throw new Exception("Dividing by zero is not allowed");
         }
@@ -64,16 +64,17 @@ public class CalculatorEngine : IComputingEngine<CalculatorEngine.AvailableActio
     {
         return numbers[0] / numbers[1];
     }
-    
-    public enum AvailableActions
+
+    public Dictionary<string, string> GetAvailableActions()
     {
-        [Description("Adding numbers")]
-        Add = 0,
-        [Description("Subtracting numbers")]
-        Subtract = 1,
-        [Description("Multiplicating numbers")]
-        Multiply = 2,
-        [Description("Dividing numbers")]
-        Divide = 3
+        return AvailableActions;
     }
+    
+    private Dictionary<string, string> AvailableActions = new Dictionary<string, string>()
+    {
+        { "1", "Adding numbers" },
+        { "2", "Subtracting numbers" },
+        { "3", "Multiplicating numbers" },
+        { "4", "Dividing numbers" },
+    };
 }

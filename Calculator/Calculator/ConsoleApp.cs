@@ -14,18 +14,17 @@ public class ConsoleApp
         var calculatorEngine = new CalculatorEngine();
         while (!stopApp)
         {
-            ShowAvailableAction<CalculatorEngine.AvailableActions>();
+            var availableActions = calculatorEngine.GetAvailableActions();
+            ShowAvailableAction(availableActions);
             action = Console.ReadLine();
-            CalculatorEngine.AvailableActions operation;
-            bool properEnumValue = Enum.TryParse(action, out operation);
-            if (properEnumValue && Enum.IsDefined(typeof(CalculatorEngine.AvailableActions),operation))
+            if (availableActions.ContainsKey(action))
             {
-                Console.WriteLine(GetEnumDescription(operation));
+                Console.WriteLine(availableActions[action]);
                 float[] arguments = GetArguments();
                 try
                 {
-                    calculatorEngine.ValidateInput(operation, arguments);
-                    Console.WriteLine("Calculation result: " + calculatorEngine.Compute(operation, arguments));
+                    calculatorEngine.ValidateInput(action, arguments);
+                    Console.WriteLine("Calculation result: " + calculatorEngine.Compute(action, arguments));
                 }
                 catch (Exception ex)
                 {
@@ -43,26 +42,17 @@ public class ConsoleApp
         }
     }
 
-    private static void ShowAvailableAction<TEnum>() where TEnum : Enum
+    private static void ShowAvailableAction(Dictionary<string, string> availableActions)
     {
         Console.WriteLine("Choose action:");
         Console.WriteLine("q. Exit");
-        var values = Enum.GetValues(typeof(TEnum));
-        int index = 0;
-        foreach (TEnum enumValue in Enum.GetValues(typeof(TEnum)))
+        int index = 1;
+        foreach (string value in availableActions.Values)
         {
-            string description = GetEnumDescription(enumValue);
-            Console.WriteLine($"{index}: {description}");
+            Console.WriteLine($"{index}: {value}");
             index++;
         }
         Console.Write("Enter action number: ");
-    }
-    
-    private static string GetEnumDescription(Enum value)
-    {
-        FieldInfo field = value.GetType().GetField(value.ToString());
-        DescriptionAttribute attribute = (DescriptionAttribute)Attribute.GetCustomAttribute(field, typeof(DescriptionAttribute));
-        return attribute == null ? value.ToString() : attribute.Description;
     }
     
     private static float[] GetArguments()
