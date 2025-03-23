@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Ca
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator.Tests", "Calculator.Tests\Calculator.Tests.csproj", "{36E72FD7-E022-446F-B1E5-4B120ADD2F7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApiCalculator", "ApiCalculator\ApiCalculator.csproj", "{90CD5C6D-4FA7-468D-8C35-C40772776363}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{36E72FD7-E022-446F-B1E5-4B120ADD2F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36E72FD7-E022-446F-B1E5-4B120ADD2F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36E72FD7-E022-446F-B1E5-4B120ADD2F7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90CD5C6D-4FA7-468D-8C35-C40772776363}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90CD5C6D-4FA7-468D-8C35-C40772776363}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90CD5C6D-4FA7-468D-8C35-C40772776363}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90CD5C6D-4FA7-468D-8C35-C40772776363}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
