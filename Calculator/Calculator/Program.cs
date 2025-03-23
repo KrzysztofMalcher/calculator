@@ -4,7 +4,7 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        var consoleApp = new ConsoleApp(new ConsoleOutput());
+        var consoleApp = new ConsoleApp(new CalculatorEngine(), new ConsoleOutput());
         consoleApp.RunApp();
     }
 }

@@ -5,12 +5,12 @@ namespace Calculator;
 public class ConsoleApp
 {
     private readonly IConsole _console;
-    private readonly CalculatorEngine _calculatorEngine;
+    private readonly IComputingEngine _calculatorEngine;
     
-    public ConsoleApp(IConsole console)
+    public ConsoleApp(IComputingEngine computingEngine, IConsole console)
     {
         _console = console;
-        _calculatorEngine = new CalculatorEngine();
+        _calculatorEngine = computingEngine;
     }
     
     public void RunApp()
