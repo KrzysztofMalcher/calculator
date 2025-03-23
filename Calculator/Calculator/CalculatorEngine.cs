@@ -1,12 +1,12 @@
 ﻿using System.ComponentModel;
-
+using Calculator.Interfaces;
 namespace Calculator;
 
-public class CalculatorEngine
+public class CalculatorEngine : IComputingEngine<CalculatorEngine.AvailableActions>
 {
     public float? Compute(AvailableActions operation, float[] numbers)
     {
-        ValidateInput( operation, numbers);
+
         switch (operation)
         {
             case AvailableActions.Add:
@@ -31,37 +31,13 @@ public class CalculatorEngine
 
         return true;
     }
-    private readonly Dictionary<AvailableActions, string> AvailableOptionDescriptions = new()
-    {
-        { AvailableActions.Add, "Adding numbers" },
-        { AvailableActions.Subtract, "Subtracting numbers" },
-        { AvailableActions.Multiply, "Multiplicating numbers" },
-        { AvailableActions.Divide, "Dividing numbers" },
-    };
-    
-    public enum AvailableActions
-    {
-        [Description("Adding numbers")]
-        Add = 0,
-        [Description("Subtracting numbers")]
-        Subtract = 1,
-        [Description("Multiplicating numbers")]
-        Multiply = 2,
-        [Description("Dividing numbers")]
-        Divide = 3
-    }
-
-    public string GetActionDescritpion(AvailableActions operation)
-    {
-        return AvailableOptionDescriptions[operation];
-    }
     
     private float Add(float [] numbers)
     {
         return numbers.Sum();
     }
 
-    private float Subtract(float [] numbers)
+    float Subtract(float [] numbers)
     {
         float result = numbers[0];
         for (int i = 1; i < numbers.Length; i++)
@@ -87,5 +63,17 @@ public class CalculatorEngine
     private float Divide(float [] numbers)
     {
         return numbers[0] / numbers[1];
+    }
+    
+    public enum AvailableActions
+    {
+        [Description("Adding numbers")]
+        Add = 0,
+        [Description("Subtracting numbers")]
+        Subtract = 1,
+        [Description("Multiplicating numbers")]
+        Multiply = 2,
+        [Description("Dividing numbers")]
+        Divide = 3
     }
 }

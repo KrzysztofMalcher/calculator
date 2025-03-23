@@ -22,8 +22,15 @@ public class ConsoleApp
             {
                 Console.WriteLine(GetEnumDescription(operation));
                 float[] arguments = GetArguments();
-                Console.WriteLine("Calculation result: " + calculatorEngine.Compute(operation, arguments));
-                
+                try
+                {
+                    calculatorEngine.ValidateInput(operation, arguments);
+                    Console.WriteLine("Calculation result: " + calculatorEngine.Compute(operation, arguments));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             } else if (action == "q")
             {
                 Console.WriteLine("Bye");
