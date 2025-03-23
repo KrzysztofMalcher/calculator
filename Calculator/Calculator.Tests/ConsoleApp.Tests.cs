@@ -31,6 +31,7 @@ public class ConsoleAppTests
             { "2", "Subtracting numbers" }
         };
         _mockCalculatorEngine.Setup(c => c.GetAvailableActions()).Returns(availableActions);
+        _mockConsole.SetupSequence(c => c.ReadLine()).Returns("q");
         
         // Act
         _consoleApp.RunApp();
@@ -50,9 +51,9 @@ public class ConsoleAppTests
         };
 
         _mockCalculatorEngine.Setup(c => c.GetAvailableActions()).Returns(availableActions);
-
+        _mockConsole.SetupSequence(c => c.ReadLine()).Returns("q");
+        
         // Act
-        _mockConsole.SetupSequence(c => c.ReadLine()).Returns("1").Returns("q");
         _consoleApp.RunApp();
 
         // Assert
@@ -70,8 +71,9 @@ public class ConsoleAppTests
         };
 
         _mockCalculatorEngine.Setup(c => c.GetAvailableActions()).Returns(availableActions);
-        _mockCalculatorEngine.Setup(c => c.Compute("1", It.IsAny<float[]>())).Returns(5);
-        _mockConsole.SetupSequence(c => c.ReadLine()).Returns("1").Returns("q");
+        _mockCalculatorEngine.Setup(c => c.ValidateInput("1", It.IsAny<float[]>())).Returns(true);
+        _mockCalculatorEngine.Setup(c => c.Compute("1", It.IsAny<float[]>())).Returns(5f);
+        _mockConsole.SetupSequence(c => c.ReadLine()).Returns("1").Returns("2").Returns("3").Returns("q");
 
         // Act
         _consoleApp.RunApp();
@@ -90,9 +92,8 @@ public class ConsoleAppTests
         };
 
         _mockCalculatorEngine.Setup(c => c.GetAvailableActions()).Returns(availableActions);
-        _mockCalculatorEngine.Setup(c => c.Compute("4", It.IsAny<float[]>()))
-            .Throws(new Exception("Dividing by zero is not allowed"));
-        _mockConsole.SetupSequence(c => c.ReadLine()).Returns("4").Returns("q");
+        _mockCalculatorEngine.Setup(c => c.ValidateInput("4", It.IsAny<float[]>())).Throws(new Exception("Dividing by zero is not allowed"));
+        _mockConsole.SetupSequence(c => c.ReadLine()).Returns("4").Returns("1").Returns("2").Returns("q");
 
         // Act
         _consoleApp.RunApp();

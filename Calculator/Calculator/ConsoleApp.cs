@@ -76,7 +76,7 @@ public class ConsoleApp
         do
         {
             _console.Write(consoleMessage);
-            var argument = Console.ReadLine();
+            var argument = _console.ReadLine();
             if (float.TryParse(argument, out var number))
             {
                 parsedArgument = number;
