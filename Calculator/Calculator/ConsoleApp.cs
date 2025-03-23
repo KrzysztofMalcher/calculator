@@ -1,61 +1,67 @@
-﻿using System;
-using System.ComponentModel;
-using System.Reflection;
+﻿using Calculator.Interfaces;
+
 namespace Calculator;
 
 public class ConsoleApp
 {
+    private readonly IConsole _console;
+    private readonly CalculatorEngine _calculatorEngine;
+    
+    public ConsoleApp(IConsole console)
+    {
+        _console = console;
+        _calculatorEngine = new CalculatorEngine();
+    }
     
     public void RunApp()
     {
-        Console.WriteLine("Welcome in my simple calculator\n");
+        _console.WriteLine("Welcome in my simple calculator\n");
         var action = "";
         var stopApp = false;
-        var calculatorEngine = new CalculatorEngine();
         while (!stopApp)
         {
-            var availableActions = calculatorEngine.GetAvailableActions();
+            var availableActions = _calculatorEngine.GetAvailableActions();
             ShowAvailableAction(availableActions);
-            action = Console.ReadLine();
+            action = _console.ReadLine();
             if (availableActions.ContainsKey(action))
             {
-                Console.WriteLine(availableActions[action]);
+                _console.WriteLine(availableActions[action]);
                 float[] arguments = GetArguments();
                 try
                 {
-                    calculatorEngine.ValidateInput(action, arguments);
-                    Console.WriteLine("Calculation result: " + calculatorEngine.Compute(action, arguments));
+                    _calculatorEngine.ValidateInput(action, arguments);
+                    _console.WriteLine("Calculation result: " + _calculatorEngine.Compute(action, arguments));
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    _console.WriteLine(ex.Message);
                 }
             } else if (action == "q")
             {
-                Console.WriteLine("Bye");
+                _console.WriteLine("Bye");
                 stopApp = true;
             }
             else
             {
-                Console.WriteLine("Unknown action, please try again");
+                _console.WriteLine("Unknown action, please try again");
             }
         }
     }
 
-    private static void ShowAvailableAction(Dictionary<string, string> availableActions)
+    private void ShowAvailableAction(Dictionary<string, string> availableActions)
     {
-        Console.WriteLine("Choose action:");
-        Console.WriteLine("q. Exit");
+        _console.WriteLine("Choose action:");
+        _console.WriteLine("q. Exit");
         int index = 1;
         foreach (string value in availableActions.Values)
         {
-            Console.WriteLine($"{index}: {value}");
+            _console.WriteLine($"{index}: {value}");
             index++;
         }
-        Console.Write("Enter action number: ");
+        _console.Write("Enter action number: ");
     }
     
-    private static float[] GetArguments()
+    private float[] GetArguments()
     {
         float firstParsedArgument = GetConsoleInput("Enter first number: ");
         float secondParsedArgument = GetConsoleInput("Enter second number: : ");
@@ -63,13 +69,13 @@ public class ConsoleApp
         return [firstParsedArgument, secondParsedArgument];
     }
 
-    private static float GetConsoleInput(string consoleMessage)
+    private float GetConsoleInput(string consoleMessage)
     {
         var loopStop = false;
         float parsedArgument = 0;
         do
         {
-            Console.Write(consoleMessage);
+            _console.Write(consoleMessage);
             var argument = Console.ReadLine();
             if (float.TryParse(argument, out var number))
             {
@@ -78,7 +84,7 @@ public class ConsoleApp
             }
             else
             {
-                Console.WriteLine("Provided input doesn't appear to be a number");
+                _console.WriteLine("Provided input doesn't appear to be a number");
             }
         } while (!loopStop);
 
