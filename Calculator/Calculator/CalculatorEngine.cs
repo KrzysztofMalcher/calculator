@@ -4,26 +4,26 @@ namespace Calculator;
 
 public class CalculatorEngine : IComputingEngine
 {
-    public float? Compute(string operation, float[] numbers)
+    public float? Compute(int operation, float[] numbers)
     {
         switch (operation)
         {
-            case "1":
+            case 0:
                 return Add(numbers);
-            case "2":
+            case 1:
                 return Subtract(numbers);
-            case "3":
+            case 2:
                 return Multiply(numbers);
-            case "4":
+            case 3:
                 return Divide(numbers);
         }
 
         return null;
     }
 
-    public bool ValidateInput(string operation, float[] numbers)
+    public bool ValidateInput(int operation, float[] numbers)
     {
-        if (operation == "4" && numbers[1] == 0)
+        if (operation == 3 && numbers[1] == 0)
         {
             throw new Exception("Dividing by zero is not allowed");
         }
@@ -63,16 +63,16 @@ public class CalculatorEngine : IComputingEngine
         return numbers[0] / numbers[1];
     }
 
-    public Dictionary<string, string> GetAvailableActions()
+    public List<string> GetAvailableActions()
     {
         return _availableActions;
     }
 
-    private Dictionary<string, string> _availableActions = new Dictionary<string, string>()
+    private List<string> _availableActions = new List<string>
     {
-        { "1", "Adding numbers" },
-        { "2", "Subtracting numbers" },
-        { "3", "Multiplication numbers" },
-        { "4", "Dividing numbers" },
+        "Adding numbers",
+        "Subtracting numbers",
+        "Multiplication numbers",
+        "Dividing numbers"
     };
 }
