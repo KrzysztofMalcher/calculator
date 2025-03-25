@@ -23,14 +23,15 @@ public class ConsoleApp
             var availableActions = _calculatorEngine.GetAvailableActions();
             ShowAvailableAction(availableActions);
             action = _console.ReadLine();
-            if (availableActions.ContainsKey(action))
+            if (int.TryParse(action, out int actionInt) && actionInt > 0 && actionInt <= availableActions.Count)
             {
-                _console.WriteLine(availableActions[action]);
+                actionInt = actionInt - 1;
+                _console.WriteLine(availableActions[actionInt]);
                 float[] arguments = GetArguments();
                 try
                 {
-                    _calculatorEngine.ValidateInput(action, arguments);
-                    _console.WriteLine("Calculation result: " + _calculatorEngine.Compute(action, arguments));
+                    _calculatorEngine.ValidateInput(actionInt, arguments);
+                    _console.WriteLine("Calculation result: " + _calculatorEngine.Compute(actionInt, arguments));
                 }
                 catch (Exception ex)
                 {
@@ -48,12 +49,12 @@ public class ConsoleApp
         }
     }
 
-    private void ShowAvailableAction(Dictionary<string, string> availableActions)
+    private void ShowAvailableAction(List<string> availableActions)
     {
         _console.WriteLine("Choose action:");
         _console.WriteLine("q. Exit");
         int index = 1;
-        foreach (string value in availableActions.Values)
+        foreach (string value in availableActions)
         {
             _console.WriteLine($"{index}: {value}");
             index++;

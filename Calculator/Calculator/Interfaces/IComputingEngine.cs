@@ -2,7 +2,7 @@
 
 public interface IComputingEngine
 {
-    float? Compute(string operation, float[] numbers);
-    bool ValidateInput(string operation, float[] numbers);
-    Dictionary<string, string> GetAvailableActions();
+    float? Compute(int operation, float[] numbers);
+    bool ValidateInput(int operation, float[] numbers);
+    List<string> GetAvailableActions();
 }
