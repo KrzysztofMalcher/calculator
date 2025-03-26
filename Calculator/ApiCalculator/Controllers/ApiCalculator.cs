@@ -83,6 +83,8 @@ public class CalculatorController : Controller
             }
             catch (Exception ex)
             {
+                operation.Result = ex.Message;
+                await _operationService.AddOperation(operation);
                 return BadRequest(ex.Message);
             }
         } 

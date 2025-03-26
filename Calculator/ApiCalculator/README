@@ -1,0 +1,7 @@
+﻿web api version
+
+to start:
+docker-compose up --build
+
+after docker is built check
+http://localhost:5002/swagger/index.html
