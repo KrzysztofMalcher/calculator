@@ -83,7 +83,7 @@ public class CalculatorController : Controller
                 }
                 operation.Result = "Provided operands are not valid numbers";
                 await _operationService.AddItem(operation);
-                return BadRequest("Provided operands are not valid numbers.");
+                return BadRequest(operation.Result);
             }
             catch (Exception ex)
             {
