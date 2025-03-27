@@ -2,10 +2,9 @@
 
 namespace ApiCalculator.Interfaces;
 
-public interface IDbOperations<TDbContext, TItem, T> where TItem : class where TDbContext : DbContext
+public interface IDbOperations<TDbContext, TItem> where TItem : class where TDbContext : DbContext
 {
-    // private readonly TDbContext _context;
-    // public void AddItem(TItem item);
-    // public List<TItem> GetAllItems();
-    // public TItem GetItemById(T id);
+    public Task AddItem(TItem item);
+    public Task<List<TItem>> GetAllItems();
+    public Task<TItem?> GetItemById(int id);
 }
